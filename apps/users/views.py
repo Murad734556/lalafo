@@ -104,12 +104,30 @@ def profile_delete(request, id):
 def user_favorites(request, id):
     setting = Setting.objects.latest('id')
     favorites_posts = FavoritePost.objects.all()
-    user= User.objects.get(id=id)
+    user = User.objects.get(id = id)
     posts = Post.objects.all()
     context = {
         'setting' : setting,
         'favorites_posts' : favorites_posts,
         'posts' : posts,
+        'user': user,
        
     }
     return render(request, 'users/favorites.html', context)
+
+
+def user_favorite_delete(request, id):
+    setting = Setting.objects.latest('id')
+    favorites_posts = FavoritePost.objects.get(id = id)
+    if request.method == "POST":
+        if 'delete' in request.POST:
+
+            like = FavoritePost.objects.get(user=request.user, post = favorites_posts.post.id)
+            like.delete()
+
+            return redirect('user_favorites', request.user.id)
+    context = {
+        'setting' : setting,
+        'favorites_posts' : favorites_posts,
+    }
+    return render(request, 'users/delete_favorites.html', context)  

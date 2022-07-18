@@ -179,8 +179,9 @@
                                     </div>
                                 </td>
                                 <td class="Product-action">
-                                    <button class="remove"><i class="icon-trash-2"></i></button>
+                                    <a href="{% url 'user_favorite_delete' post.id %}"><button class="remove" name = "delete"><i class="icon-trash-2"></i></button></a>
                                 </td>
+
                             </tr>
                             {% endfor %}
                         </tbody>

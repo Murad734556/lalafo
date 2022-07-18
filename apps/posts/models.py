@@ -52,7 +52,7 @@ class FavoritePost(models.Model):
     
 
     def __str__(self):
-        return f"{self.user.username} {self.post.title}"
+        return f"{self.user.username} {self.post.title} {self.id}"
 
     class Meta:
         verbose_name = "Понравился пост"
