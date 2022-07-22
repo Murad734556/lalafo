@@ -126,10 +126,11 @@
         <div class="container">
             <!-- Pager Banner Start -->
             <div class="page-banner-content text-center">
-                <h2 class="page-banner-title">Контакты</h2>
+                <h2 class="page-banner-title">Спасибо за обращение!</h2>
+                <a href="{% url 'index' %}">Скоро вашу проблему рассмотрят наши специалисты и напишут ответ в вашу почту</a>
                 <ul class="breadcrumb justify-content-center">
                     <li class="breadcrumb-item"><a href="{% url 'index' %}">Домой</a></li>
-                    <li class="breadcrumb-item active">Контакты</li>
+                    <li class="breadcrumb-item active">Ваша обращение принято</li>
                 </ul>
             </div>
             <!-- Pager Banner End -->
@@ -185,60 +186,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Contact Form Start -->
-            <div class="contact-form section-padding-02 mt-n3">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <!-- Section Title Start -->
-                        <div class="section-title text-center">
-                            <h2 class="title">Оставьте сообщение здесь</h2>
-                            <p>Если у вас возникли проблемы или же вопросы, напишите нам </p>
-                        </div>
-                        <!-- Section Title End -->
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <form method="POST">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <input type="text" name="name" placeholder="Имя" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <input type="email" name="email" placeholder="Почта" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <input type="text" name="title" placeholder="Заголовок" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form">
-                                        <input type="text" name="phone" placeholder="Телефонный номер" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-form">
-                                        <textarea name="problem" placeholder="Напишите проблему..." class="form-control"></textarea>
-                                    </div>
-                                </div>
-                                <p class="form-message"></p>
-                                <div class="col-md-12">
-                                    <div class="single-form text-center">
-                                        <button class="btn btn-primary btn-hover-dark">Отправить</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!-- Contact Form End -->
+
         </div>
     </div>
     <!-- Contact Section End -->
