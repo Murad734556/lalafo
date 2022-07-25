@@ -1,3 +1,4 @@
+{%load i18n  mptt_admin %}
 {% load static %}
 <!-- Header Start -->
 <div class="header-section section d-none d-lg-block">
@@ -132,7 +133,7 @@
                         </div>
                         <div class="dropdown">
                             <a href="index.html#" class="header-action-btn" role="button" data-bs-toggle="dropdown">
-                                <i class="icon-settings"></i>
+                                <!-- <i class="icon-settings"></i> -->
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <!-- Dropdown Language End -->
@@ -285,14 +286,31 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <!-- Dropdown Language End -->
-                                <div class="dropdown-language">
+                                <!-- <div class="dropdown-language">
                                     <span class="selected"><img src="assets/images/flag/01.jpg" alt="">English</span>
                                     <ul class="language-list">
                                         <li><a href="index.html#"><img src="assets/images/flag/01.jpg" alt="">English</a></li>
                                         <li><a href="index.html#"><img src="assets/images/flag/02.jpg" alt=""> اللغة العربية</a></li>
                                         <li><a href="index.html#"><img src="assets/images/flag/03.jpg" alt=""> Spanish</a></li>
                                     </ul>
-                                </div>
+                                </div> -->
+
+                                <li>
+                                    <form action="{%url 'set_language'%}" method="post">{%csrf_token%}
+                                        <input  name="text" type="hidden"  value="{{redirect_to}}" >
+                                        <select name="language">
+                                        {%get_current_language as LANGUAGE_CODE%}
+                                        {%get_language_info_list for LANGUAGES as languages%}
+                                        {%for language in languages%}
+                                        <option value="{{language.code}}" {%if language.code == LANGUAGE_CODE%}
+                                            selected{%endif%}>
+                                            {{language.name_local}} ({{language.code}})
+                                        </option>
+                                        {%endfor%}
+                                        </select>
+                                        <input type="submit" value="Go">
+                                    </form>
+                                </li>
                                 <!-- Dropdown Language End -->
 
                                 <!-- Dropdown Currency End -->
